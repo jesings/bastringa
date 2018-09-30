@@ -1,34 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-int strlen( char * mystr){
-    if(mystr[0]) return 0; else return 1+strlen(++mystr);
+int strlen( char* mystr){
+  return *mystr ? 1 + strlen(++mystr) : 0;
 }
-char* strcat(char* dest,char* source){
-    const int len1 = strlen(dest);
-    for(int i = 0;source[i];i++){
-        dest[i+len1] = source[i];
-    }
-    return dest;
+char* strcat(char* dest, char* source){
+  int len1 = strlen(dest);
+  for(;*source; dest[len1++] = *source++);
+  dest[len1] = 0;
+  return dest;
 }
 int strcmp(char* s1, char* s2){
-    int i = 0;
-    for(;s1[i];i++){
-        if(!s2[i]) return 1; 
-        if(s1[i]>s2[i]) return 1;
-        else if(s1[i]<s2[i]) return -1;
-    }
-    return !s2[i]?0:-1;
+  for(;*s1 && *s1==*s2; s1++,s2++);
+  return (unsigned char)*s1 - (unsigned char)*s2;
 }
-char* strstr(char *s1,char *s2){
-    for(int i=0;s1[i];i++){
-        rejecting_state:
-        for(int j=0;s2[i];j++){
-            if(s1[i+j]!=s2[j]){
-                i++;
-                goto rejecting_state;
-            }
-        }
-        return s1+i;
-    }
-    return NULL;
+char* strstr(char* s1, char* s2){
+  for(;*s1;s1++)
+    for(int i=0;s1[i]==s2[i];i++)
+      if(!s2[i+1])
+	return s1;
+  return NULL;
 }
