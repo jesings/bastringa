@@ -7,8 +7,4 @@ bastrlib.o: bastrlib.c bastrlib.h
 go:all
 	./bastringa
 clean:
-	rm *~*
-	rm *.o
-	rm bastringa
-	rm *.exe
-	rm *.out
+	rm *.o bastringa *~* *.exe *.out
