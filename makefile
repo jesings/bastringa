@@ -7,4 +7,4 @@ bastr.o: bastr.c
 bastringa2electricBoogaloo.o: bastringa2electricBoogaloo.c
 	gcc -c bastringa2electricBoogaloo.c
 go:all
-	bastringa
+	./bastringa
