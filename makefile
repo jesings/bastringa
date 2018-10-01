@@ -1,10 +1,14 @@
-all: bastringa.o bastr.o bastringa2electricBoogaloo.o
-	gcc bastringa.o bastringa2electricBoogaloo.o bastr.o -o bastringa
-bastringa.o: bastringa.c 
+all: bastringa.o bastrlib.o bastrlib.h
+	gcc bastringa.o bastrlib.o -o bastringa
+bastringa.o: bastringa.c bastrlib.h
 	gcc -c bastringa.c
-bastr.o: bastr.c 
-	gcc -c bastr.c
-bastringa2electricBoogaloo.o: bastringa2electricBoogaloo.c
-	gcc -c bastringa2electricBoogaloo.c
+bastrlib.o: bastrlib.c bastrlib.h 
+	gcc -c bastrlib.c
 go:all
 	./bastringa
+clean:
+	rm *~*
+	rm *.o
+	rm bastringa
+	rm *.exe
+	rm *.out

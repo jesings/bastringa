@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 int strlen( char* mystr){
   return *mystr ? 1 + strlen(++mystr) : 0;
 }
@@ -19,4 +20,14 @@ char* strstr(char* s1, char* s2){
       if(!s2[i+1])
 	return s1;
   return NULL;
+}
+char* strncpy(char* dest, char* source, int n) {
+  int i;
+  for (i=0; i<n && source[i]; dest[i] = source[i], i++);
+  for (; i<n; dest[i++] = 0);
+  return dest;
+}
+char* strchr(char* s, char c) {
+  while (*s != c && *s++);
+  return *s ? s : NULL;
 }
